@@ -13,12 +13,13 @@ const ResultList = ({ title, results, navigation }) => {
             data={results}
             keyExtractor={(result) => result.id}
             renderItem={({ item }) => {
-                return (
-                    <TouchableOpacity onPress={() => navigation.navigate('ResultsShow')}>
+                return ( // When using withNavigation we need to communicate with screen that use 2nd argument to communicate. In this case we use ID to communicate
+                    <TouchableOpacity onPress={() => navigation.navigate('ResultsShow', {id : item.id})}> 
                         <ResultDetail result={item} />
                     </TouchableOpacity>
                 )
             }}
+            
             />
         </View>
     )
